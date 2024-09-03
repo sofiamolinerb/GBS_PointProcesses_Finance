@@ -20,19 +20,6 @@ from sklearn.decomposition import PCA
 from strawberryfields.apps import sample
 from itertools import product
 from scipy.special import poch, factorial
-from thewalrus.quantum import density_matrix_element, reduced_gaussian, Qmat, Xmat, Amat
-from thewalrus.random import random_covariance
-from thewalrus import (
-    tor,
-    ltor,
-    threshold_detection_prob,
-    numba_tor,
-    numba_ltor,
-    rec_torontonian,
-    rec_ltorontonian,
-)
-from thewalrus.symplectic import two_mode_squeezing
-from thewalrus._torontonian import numba_vac_prob
 import numpy as np
 from thewalrus import rec_torontonian as tor
 from thewalrus.quantum import Qmat, Xmat, Amat
