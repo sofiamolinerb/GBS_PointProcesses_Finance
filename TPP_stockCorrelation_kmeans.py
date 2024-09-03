@@ -83,9 +83,6 @@ def tor(A, fsum=False):
 
 # In[31]:
 
-
-import numpy as np
-
 def is_positive_semidefinite(matrix, tol=1e-10):
     # Check if the input is a square matrix
     if matrix.shape[0] != matrix.shape[1]:
@@ -226,17 +223,9 @@ def calculate_correlation_matrix_daily(selected_stocks):
     return correlation_matrix_daily
 
 
-# In[39]:
-
-
-import zipfile
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
+# In[39]
 # Compute the correlation matrices to reproduce past results
-correlation_matrix_log = calculate_correlation_matrix_KERNEL(selected_stocks)
+correlation_matrix_log = calculate_correlation_matrix_log(selected_stocks)
 correlation_matrix_daily = calculate_correlation_matrix_daily(selected_stocks)
 
 # Create a figure with two subplots side by side
@@ -337,13 +326,6 @@ print("2 most Sampled Stocks (thres):", centre_thres)
 # # These are all from the same industry which is energy
 
 # In[48]:
-
-
-import zipfile
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Path to the zip file
 zip_file_path = r'C:\Users\user\Downloads\archive (1).zip'
