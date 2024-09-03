@@ -59,11 +59,7 @@ plt.show()
 
 # In[3]:
 
-
-import numpy as np
 import scipy.linalg
-import seaborn as sns
-import matplotlib.pyplot as plt
 from scipy.optimize import root_scalar
 
 def plot_heatmap(matrix, title, ax=None, vmin=None, vmax=None):
@@ -137,9 +133,6 @@ print("Is the unitary matrix U unitary? ", unitary_check)
 
 # In[4]:
 
-
-import numpy as np
-
 def is_unitary(matrix, tol=1e-10):
     identity = np.eye(matrix.shape[0])
     return np.allclose(matrix @ matrix.conj().T, identity, atol=tol)
@@ -212,14 +205,7 @@ def draw_quantum_circuit(gate_sequence, N, squeezing_parameters):
 
 
 # In[6]:
-
-
-import numpy as np
 import scipy
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.optimize import root_scalar
-import pandas as pd
 import zipfile
 from thewalrus.csamples import generate_thermal_samples, rescale_adjacency_matrix_thermal
 
@@ -300,13 +286,6 @@ plt.show()
 
 
 # In[9]:
-
-
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 # Assuming all_stocks_df is the DataFrame containing the stock data with columns ['date', 'Name', 'close']
 # Filter the dataset for the most sampled stocks
 most_sampled_stocks_set = set(most_sampled_stocks)
