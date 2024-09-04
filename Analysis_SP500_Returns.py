@@ -55,9 +55,6 @@ sp500['logreturn'] = sp500['logreturn'] * 100
 
 # In[3]:
 
-
-import matplotlib.pyplot as plt
-
 # Create a figure with two subplots, one on top of the other
 fig, axs = plt.subplots(2, 1, figsize=(20, 10))  # 2 rows, 1 column
 
@@ -86,13 +83,6 @@ plt.show()
 # # Estract this data from specific groups of stocks
 
 # In[5]:
-
-
-# Import necessary packages
-import yahoo_fin.stock_info as yf
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
 
 # List of stock tickers from S&P 500
 tickers = ['AAPL', 'MSFT']  # Example tickers
@@ -180,13 +170,6 @@ plt.show()
 # ### This analysis can help understanding correlations between stocks over larger periods of time, we see that tech companies do not always behave the same
 
 # In[6]:
-
-
-# Import necessary packages
-import yahoo_fin.stock_info as yf
-import matplotlib.pyplot as plt
-import pandas as pd
-
 # List of stock tickers from S&P 500
 tickers = ['AAPL', 'MSFT']  # Example tickers
 
