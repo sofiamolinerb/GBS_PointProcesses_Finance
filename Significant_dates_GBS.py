@@ -4,10 +4,6 @@
 # In[23]:
 
 
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-from datetime import datetime
 import yahoo_fin.stock_info as yf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,14 +12,26 @@ import pandas as pd
 from datetime import datetime, timedelta
 import random
 import strawberryfields as sf
-from strawberryfields.apps import points, plot
+from strawberryfields.apps import points, plot, sample
 from strawberryfields.ops import *
 from sklearn.datasets import make_blobs
-from thewalrus import hafnian
-import random
+from thewalrus import hafnian, rec_torontonian as tor
+from thewalrus.quantum import density_matrix_element, reduced_gaussian, Qmat, Xmat, Amat
+from thewalrus.random import random_covariance
+from thewalrus import (
+    ltor,
+    threshold_detection_prob,
+    numba_tor,
+    numba_ltor,
+    rec_ltorontonian,
+)
+from thewalrus.symplectic import two_mode_squeezing
+from thewalrus._torontonian import numba_vac_prob
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from strawberryfields.apps import sample
+from scipy.optimize import minimize
+from itertools import product
+from scipy.special import poch, factorial
 
 
 # ## Motivation: Simulate Hawkes Process
@@ -44,13 +52,6 @@ from strawberryfields.apps import sample
 #     return events
 
 # In[24]:
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-from datetime import datetime
-
 def simulate_hawkes(mu, alpha, beta, T):
     events = []
     s = 0.0  # current time
@@ -141,43 +142,6 @@ plt.show()
 
 # In[ ]:
 
-
-import yahoo_fin.stock_info as yf
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-from datetime import datetime, timedelta
-import random
-import strawberryfields as sf
-from strawberryfields.apps import points, plot
-from strawberryfields.ops import *
-from sklearn.datasets import make_blobs
-from thewalrus import hafnian
-import random
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from strawberryfields.apps import sample
-from itertools import product
-from scipy.special import poch, factorial
-from thewalrus.quantum import density_matrix_element, reduced_gaussian, Qmat, Xmat, Amat
-from thewalrus.random import random_covariance
-from thewalrus import (
-    tor,
-    ltor,
-    threshold_detection_prob,
-    numba_tor,
-    numba_ltor,
-    rec_torontonian,
-    rec_ltorontonian,
-)
-from thewalrus.symplectic import two_mode_squeezing
-from thewalrus._torontonian import numba_vac_prob
-
-
-# In[ ]:
-
-
 # Step 1: Download and preprocess the data
 sp500 = yf.get_data("^gspc", start_date="01/01/2008", end_date="01/01/2015")
 sp500['daily_return'] = sp500['close'].pct_change()
@@ -255,12 +219,6 @@ def plot_samples(samples, title, event_dates):
 
 
 # In[ ]:
-
-
-from thewalrus import rec_torontonian as tor
-from thewalrus.quantum import Qmat, Xmat, Amat
-
-import numpy as np
 
 def is_positive_semidefinite(matrix, tol=1e-10):
     # Check if the input is a square matrix
