@@ -114,11 +114,6 @@ selected_stocks_same_sector = ["MRO", "DVN", "COP", "KMI", "COG", "PSX", "CVX", 
 
 # In[9]:
 
-
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 # Define the RBF kernel function
 def rbf_kernel(log_returns, sigma):
     n_stocks = log_returns.shape[1]
