@@ -2,8 +2,6 @@
 # coding: utf-8
 
 # In[6]:
-
-
 import numpy as np
 import plotly
 from sklearn.datasets import make_blobs#
@@ -13,10 +11,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import zipfile
 import yfinance as yf
+import scipy
 from scipy.integrate import simps # Path to the zip file
-import pandas as pd
-import zipfile
+from scipy.optimize import root_scalar
+import scipy.linalg
 from PIL import Image
+from thewalrus.csamples import generate_thermal_samples, rescale_adjacency_matrix_thermal
 
 #The idea is to create a GBS device capable of sampling form a covariance/ correlation matrix from different stock prices
 
@@ -95,13 +95,6 @@ plt.show()
 
 # In[7]:
 
-
-import numpy as np
-import scipy.linalg
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.optimize import root_scalar
-
 def plot_heatmap(matrix, title, ax=None, vmin=None, vmax=None):
     # Calculate the magnitude of the complex matrix
     matrix_magnitude = np.abs(matrix)
@@ -172,10 +165,6 @@ print("Is the unitary matrix U unitary? ", unitary_check)
 
 
 # In[12]:
-
-
-import numpy as np
-
 def is_unitary(matrix, tol=1e-10):
     identity = np.eye(matrix.shape[0])
     return np.allclose(matrix @ matrix.conj().T, identity, atol=tol)
@@ -253,16 +242,6 @@ draw_quantum_circuit(cmds, U_corr.shape[0], squeezing_parameters)
 
 # In[9]:
 
-
-import numpy as np
-import scipy
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.optimize import root_scalar
-import pandas as pd
-import zipfile
-from thewalrus.csamples import generate_thermal_samples, rescale_adjacency_matrix_thermal
-
 # Define the RBF kernel function
 def rbf_kernel(R: np.ndarray, sigma: float) -> np.ndarray:
     return np.exp(-((scipy.spatial.distance.cdist(R, R)) ** 2) / 2 / sigma**2)
@@ -318,10 +297,6 @@ plt.show()
 
 
 # In[10]:
-
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 def plot_samples(samples, title, xticklabels=None):
     """
