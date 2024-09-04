@@ -2,8 +2,6 @@
 # coding: utf-8
 
 # In[11]:
-
-
 import numpy as np
 import pandas as pd
 import zipfile
@@ -11,19 +9,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import random
 import strawberryfields as sf
-from strawberryfields.apps import points, plot
+from strawberryfields.apps import points, plot, sample
 from strawberryfields.ops import *
 from sklearn.datasets import make_blobs
 from thewalrus import hafnian
 
-import random
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
-from strawberryfields.apps import sample
-
-
-# In[12]:
-
 
 from itertools import product
 from scipy.special import poch, factorial
