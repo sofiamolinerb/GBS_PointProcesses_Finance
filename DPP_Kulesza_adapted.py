@@ -6,6 +6,7 @@
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import zipfile
 import matplotlib.pyplot as plt
 import random
@@ -51,12 +52,6 @@ def compute_correlation_matrix_J(returns):
 
 
 # In[13]:
-
-
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # List of selected stocks
 DPP_selected_stocks = ["CA", "CHK", "SIG", "LH", "AVB", "BMY", "EFX", "RRC", "TEL", "INTU", "PRGO", "NVDA", "SCG", "SLG", "DVN", "ISRG", "ARE"]
@@ -189,14 +184,6 @@ print(common_ppp_stocks)
 
 
 # In[21]:
-
-
-import numpy as np
-import pandas as pd
-import zipfile
-import matplotlib.pyplot as plt
-import seaborn as sns
-import random
 
 # Consider all stocks in the CSV file
 all_stocks = all_stocks_df['Name'].unique()
