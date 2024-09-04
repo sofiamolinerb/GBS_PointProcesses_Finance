@@ -9,6 +9,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import zipfile
+import scipy.linalg
+from scipy.optimize import root_scalar
+import scipy
+from thewalrus.csamples import generate_thermal_samples, rescale_adjacency_matrix_thermal
 
 # Path to the zip file
 zip_file_path = r'C:\Users\user\Downloads\archive (1).zip'
@@ -58,9 +62,6 @@ plt.show()
 
 
 # In[3]:
-
-import scipy.linalg
-from scipy.optimize import root_scalar
 
 def plot_heatmap(matrix, title, ax=None, vmin=None, vmax=None):
     # Calculate the magnitude of the complex matrix
@@ -205,9 +206,6 @@ def draw_quantum_circuit(gate_sequence, N, squeezing_parameters):
 
 
 # In[6]:
-import scipy
-import zipfile
-from thewalrus.csamples import generate_thermal_samples, rescale_adjacency_matrix_thermal
 
 # Define the RBF kernel function
 def rbf_kernel(R: np.ndarray, sigma: float) -> np.ndarray:
