@@ -52,9 +52,9 @@ def calculate_correlation_matrix_log(selected_stocks): #compute correlation matr
     # Compute the correlation matrix: Need to revise why we need that scaling factor
     correlation_matrix_0 = sum(np.outer(log_returns.iloc[i], log_returns.iloc[i]) for i in range(n_days)) /n_days
     rescaling_factor = n_days
-    correlation_matrix = correlation_matrix_0 * rescaling_factor #this is included because in Jahangiri's paper there is no rescaling factor but itt seems to be needed here
+    correlation_matrix = correlation_matrix_0 * rescaling_factor #this is included because in Jahangiri's paper (would be good to investigate)
+    return correlation_matrix 
     
-    return correlation_matrix  # Corrected return statement
 def plot_heatmap(matrix, title, ax=None, vmin=None, vmax=None):
     # Calculate the magnitude of the complex matrix
     matrix_magnitude = np.abs(matrix)
